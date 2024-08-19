@@ -1,21 +1,22 @@
 {
 	"easycom": {
-		"autoscan": true,
-		"custom": {
-			"^uv-(.*)": "@climblee/uv-ui/components/uv-$1/uv-$1.vue"
-		}
-	},
+			"autoscan": true,
+			"custom": {
+				"^uv-(.*)": "@climblee/uv-ui/components/uv-$1/uv-$1.vue"
+			}
+		},
+	    // 其他内容
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/index/index",
+			"path": "pages/doctorDetail/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "中南林业医院挂号系统 - 医生详情"
 			}
 		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
+		"navigationBarTitleText": "中南林业医院挂号系统",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	},

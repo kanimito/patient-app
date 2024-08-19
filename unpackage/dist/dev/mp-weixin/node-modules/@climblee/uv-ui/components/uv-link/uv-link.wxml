@@ -1,0 +1,1 @@
+<text data-event-opts="{{[['tap',[['openLink',['$event']]]]]}}" class="uv-link data-v-0d4794d2" style="{{$root.s0}}" catchtap="__e">{{text}}</text>

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "uv-line": "/node-modules/@climblee/uv-ui/components/uv-line/uv-line"
+  },
+  "component": true
+}
