@@ -1,6 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "node": "/node-modules/@climblee/uv-ui/components/uv-parse/node/node"
-  }
-}

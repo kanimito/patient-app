@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "uv-transition": "/node-modules/@climblee/uv-ui/components/uv-transition/uv-transition",
-    "uv-icon": "/node-modules/@climblee/uv-ui/components/uv-icon/uv-icon"
-  },
-  "component": true
-}

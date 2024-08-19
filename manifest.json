@@ -1,6 +1,6 @@
 {
-    "name" : "patient-front-wechat",
-    "appid" : "__UNI__1F3992D",
+    "name" : "wechat-patient-front",
+    "appid" : "__UNI__A0905E5",
     "description" : "",
     "versionName" : "1.0.0",
     "versionCode" : "100",
@@ -50,7 +50,7 @@
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "wx6a44b1cff77480c9",
+        "appid" : "",
         "setting" : {
             "urlCheck" : false
         },

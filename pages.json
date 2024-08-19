@@ -1,11 +1,4 @@
 {
-	"easycom": {
-			"autoscan": true,
-			"custom": {
-				"^uv-(.*)": "@climblee/uv-ui/components/uv-$1/uv-$1.vue"
-			}
-		},
-	    // 其他内容
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
 			"path": "pages/doctorDetail/index",
@@ -16,7 +9,7 @@
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "中南林业医院挂号系统",
+		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	},
