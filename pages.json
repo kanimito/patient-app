@@ -1,9 +1,22 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/doctorDetail/index",
+			"path": "pages/doctorDetail/doctorDetail",
 			"style": {
 				"navigationBarTitleText": "中南林业医院挂号系统 - 医生详情"
+			}
+		},
+		{
+
+			"path": "pages/reservation/reservation",
+			"style": {
+				"navigationBarTitleText": "中南林业医院挂号系统 - 预约详情"
+			}
+		},
+		{
+			"path": "pages/pay/pay",
+			"style": {
+				"navigationBarTitleText": "中南林业医院挂号系统 - 支付页面"
 			}
 		}
 	],

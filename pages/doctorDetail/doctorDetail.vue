@@ -5,7 +5,7 @@
 		<uv-skeletons :loading="loading" :skeleton="skeleton">
 			<view class="uv-skeletons__row uv-skeletons__row1">
 				<view class="uv-skeletons__row1--left">
-					<image class="img" src="/static/ZhangJie.jpg"></image>
+					<image class="img" :src="'/static/'+doctor.avatar"></image>
 				</view>
 				<view class="uv-skeletons__row1--right">
 					<uv-text :text="'医生姓名:'+ doctor.realName"></uv-text>
@@ -25,15 +25,17 @@
 				<view class="h-td">号数</view>
 				<view class="h-td">操作</view>
 			</view>
-			<view class="h-tr h-tr-2" v-for="(item,index) in shift" :key="index" >
+			<view class="h-tr h-tr-2" v-for="(item,index) in shift" :key="index">
 				<view class="h-td">{{ item.dpName }}</view>
 				<view class="h-td">{{ item.dAddress }}</view>
 				<view class="h-td">{{ item.time }}</view>
 				<view class="h-td">{{ item.count }}</view>
-				<view class="h-td"><uv-button type="success" text="预约"></uv-button></view>
+				<view class="h-td"><uv-button type="success" @click="goReservation(item)" text="预约"></uv-button></view>
 			</view>
 		</view>
+		<uv-toast ref="toast"></uv-toast>
 	</view>
+	
 
 </template>
 <script>
@@ -43,37 +45,47 @@
 		},
 		data() {
 			return {
+				toast:{
+					type:"error",
+					message:"预约失败，已经没号了"
+				},
 				loading: false,
 				doctor: {
+					avatar:"ZhangJie.jpg",
 					realName: "张杰",
 					sex: 0,
 					mobile: "18973599823",
 				},
 				shift: [{
+						id: 1,
 						dpName: "呼吸内一科",
 						dAddress: "A-11-11",
 						time: 8,
 						count: 0
 					},
 					{
+						id: 2,
 						dpName: "呼吸内一科",
 						dAddress: "A-11-11",
 						time: 9,
 						count: 1
 					},
 					{
+						id: 3,
 						dpName: "呼吸内一科",
 						dAddress: "A-11-11",
 						time: 10,
 						count: 3
 					},
 					{
+						id: 4,
 						dpName: "呼吸内一科",
 						dAddress: "A-11-11",
 						time: 11,
 						count: 2
 					},
 					{
+						id: 5,
 						dpName: "呼吸内一科",
 						dAddress: "A-11-11",
 						time: 12,
@@ -103,6 +115,25 @@
 		methods: {
 			leftClick() {
 				console.log('leftClick');
+			},
+			goReservation(item) {
+				if (item.count > 0) {
+					uni.$uv.route({
+						url: "/pages/reservation/reservation",
+						params: {
+							shift: encodeURIComponent(JSON.stringify(item)),
+							doctor:encodeURIComponent(JSON.stringify(this.doctor))
+						}
+					})
+				} else {
+					this.showToast(this.toast)
+				}
+
+			},
+			showToast(params) {
+				this.$refs.toast.show({
+					...params
+				})
 			}
 		}
 	}
@@ -110,6 +141,7 @@
 
 <style lang="scss" scoped>
 	@import "../../lib/helang-table.scss";
+
 	.uv-skeletons__row {
 		/* #ifndef APP-NVUE */
 		display: flex;
@@ -131,5 +163,14 @@
 	// 增加表单宽度
 	.expand-width {
 		width: 200rpx;
+	}
+
+	.item {
+		margin: 10rpx 0;
+		padding: 10rpx;
+		text-align: center;
+		background: #f1f1f1;
+		font-size: 28rpx;
+		color: #666;
 	}
 </style>

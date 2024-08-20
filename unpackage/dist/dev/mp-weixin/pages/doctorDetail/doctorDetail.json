@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "中南林业医院挂号系统 - 医生详情",
+  "usingComponents": {
+    "uv-divider": "/uni_modules/uv-divider/components/uv-divider/uv-divider",
+    "uv-skeletons": "/uni_modules/uv-skeletons/components/uv-skeletons/uv-skeletons",
+    "uv-text": "/uni_modules/uv-text/components/uv-text/uv-text",
+    "uv-button": "/uni_modules/uv-button/components/uv-button/uv-button",
+    "uv-toast": "/uni_modules/uv-toast/components/uv-toast/uv-toast"
+  }
+}

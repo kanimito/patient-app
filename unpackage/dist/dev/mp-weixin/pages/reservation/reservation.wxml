@@ -1,0 +1,1 @@
+<view class="content"><uv-image vue-id="22ef45e6-1" src="{{'/static/'+doctor.avatar}}" width="80px" height="80px" bind:__l="__l"></uv-image><text>{{doctor.realName}}</text><text>{{doctor.mobile}}</text><text>{{shift.dpName}}</text><text>{{shift.dAddress}}</text><uv-button vue-id="22ef45e6-2" type="primary" text="{{'挂号请支付'+registrationFee+'元'}}" bind:__l="__l"></uv-button></view>
