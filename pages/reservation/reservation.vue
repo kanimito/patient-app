@@ -6,10 +6,18 @@
 		<text>{{ shift.dpName }}</text>
 		<text>{{ shift.dAddress }}</text>
 		<uv-button type="primary" @click="toPay()" :text="'挂号请支付'+registrationFee+'元'"></uv-button>
+		<uv-toast ref="toast"></uv-toast>
 	</view>
 </template>
 
 <script>
+	import {
+		alipay
+	} from "@/api/api/pay.js"
+	import {
+		insertRegistration,
+		isIn
+	} from "@/api/api/registration.js"
 	export default {
 		data() {
 			return {
@@ -32,51 +40,70 @@
 
 		},
 		methods: {
-			dateFormat(){
-				
+			dateFormat() {
+
+			},
+			isIn() {
+
 			},
 			toPay() {
 				let _this = this;
-				const date = new Date();
-				const year = date.getFullYear();
-				const month = String(date.getMonth() + 1).padStart(2, '0'); // 月份从0开始
-				const day = String(date.getDate()).padStart(2, '0');
-				const hours = String(date.getHours()).padStart(2, '0');
-				const minutes = String(date.getMinutes()).padStart(2, '0');
-				const seconds = String(date.getSeconds()).padStart(2, '0');
-				const formattedDate = `${year}${month}${day}${hours}${minutes}${seconds}`;
-				console.log(date);
-				uni.getProvider({
-					service: 'payment',
-					success(res) {
-						console.log(res);
-						uni.request({
-							url: 'http://u4taww.natappfree.cc/alipay/pay',
-							method: 'GET',
-							data: {
-								out_trade_no: formattedDate,
-								total_amount: '9.00',
-								subject: '挂号'
-							},
-							success(data) {
-								// console.log(data.data.data);
-								uni.requestPayment({
-									provider: res.provider[0],
-									orderInfo: data.data.data,
-									success(payRes) {
-										console.log(payRes);
-										_this.register.shiftTimeId = _this.shift.shiftTimeId;
-										_this.register.shiftId= _this.shift.shiftId;
-										console.log(_this.register);
-										uni.request({
-											url:"http://u4taww.natappfree.cc/alipay/pay"
-										})
-									}
+				_this.register.shiftTimeId = _this.shift.shiftTimeId;
+				_this.register.shiftId = _this.shift.shiftId;
+				isIn().then(res => {
+					console.log(res);
+					if (res.data.code == 0) {
+						const date = new Date();
+						const year = date.getFullYear();
+						const month = String(date.getMonth() + 1).padStart(2, '0'); // 月份从0开始
+						const day = String(date.getDate()).padStart(2, '0');
+						const hours = String(date.getHours()).padStart(2, '0');
+						const minutes = String(date.getMinutes()).padStart(2, '0');
+						const seconds = String(date.getSeconds()).padStart(2, '0');
+						const formattedDate = `${year}${month}${day}${hours}${minutes}${seconds}`;
+						console.log(date);
+						uni.getProvider({
+							service: 'payment',
+							success(res) {
+								console.log(res);
+								alipay({
+									out_trade_no: formattedDate,
+									total_amount: '9.00',
+									subject: '挂号'
+								}).then(data => {
+									uni.requestPayment({
+										provider: res.provider[0],
+										orderInfo: data.data.data,
+										success(payRes) {
+											console.log(payRes);
+
+											console.log(_this.register);
+											insertRegistration(_this.register).then(
+												res => {
+													console.log(res);
+													uni.$uv.route({
+														url: "/pages/doctorDetail/doctorDetail"
+													})
+												})
+										}
+									})
 								})
+							}
+						})
+					} else {
+						console.log(res.data.data);
+						this.$refs.toast.show({
+							type: 'error',
+							icon: false,
+							title: '失败主题',
+							message: "您已预约过",
+							complete() {
 							}
 						})
 					}
 				})
+
+
 			}
 		}
 	}

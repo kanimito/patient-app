@@ -3969,6 +3969,8 @@ try {
     uvButton:
       __webpack_require__(/*! @/uni_modules/uv-button/components/uv-button/uv-button.vue */ 59)
         .default,
+    uvToast: __webpack_require__(/*! @/uni_modules/uv-toast/components/uv-toast/uv-toast.vue */ 75)
+      .default,
   }
 } catch (e) {
   if (
@@ -4008,6 +4010,7 @@ var render = function () {
           },
         },
       }),
+      _c("uv-toast", { ref: "toast", attrs: { _i: 7 } }),
     ],
     1
   )
