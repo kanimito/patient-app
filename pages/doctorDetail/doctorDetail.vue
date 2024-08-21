@@ -27,71 +27,44 @@
 			</view>
 			<view class="h-tr h-tr-2" v-for="(item,index) in shift" :key="index">
 				<view class="h-td">{{ item.dpName }}</view>
-				<view class="h-td">{{ item.dAddress }}</view>
-				<view class="h-td">{{ item.time }}</view>
+				<view class="h-td">{{ item.daddress }}</view>
+				<view class="h-td">{{ item.time }}:00</view>
 				<view class="h-td">{{ item.count }}</view>
 				<view class="h-td"><uv-button type="success" @click="goReservation(item)" text="预约"></uv-button></view>
 			</view>
 		</view>
 		<uv-toast ref="toast"></uv-toast>
 	</view>
-	
+
 
 </template>
 <script>
+	import {
+		getDoctor
+	} from "@/api/api/doctor.js"
+	import {
+		getShiftTimeList
+	} from "@/api/api/shift.js"
 	export default {
 		onLoad() {
 
 		},
 		data() {
 			return {
-				toast:{
-					type:"error",
-					message:"预约失败，已经没号了"
+				doctorId: 0,
+				toast: {
+					type: "error",
+					message: "预约失败，已经没号了"
 				},
-				loading: false,
+				loading: true,
 				doctor: {
-					avatar:"ZhangJie.jpg",
-					realName: "张杰",
-					sex: 0,
-					mobile: "18973599823",
+					// avatar:"ZhangJie.jpg",
+					// realName: "张杰",
+					// sex: 0,
+					// mobile: "18973599823",
 				},
-				shift: [{
-						id: 1,
-						dpName: "呼吸内一科",
-						dAddress: "A-11-11",
-						time: 8,
-						count: 0
-					},
-					{
-						id: 2,
-						dpName: "呼吸内一科",
-						dAddress: "A-11-11",
-						time: 9,
-						count: 1
-					},
-					{
-						id: 3,
-						dpName: "呼吸内一科",
-						dAddress: "A-11-11",
-						time: 10,
-						count: 3
-					},
-					{
-						id: 4,
-						dpName: "呼吸内一科",
-						dAddress: "A-11-11",
-						time: 11,
-						count: 2
-					},
-					{
-						id: 5,
-						dpName: "呼吸内一科",
-						dAddress: "A-11-11",
-						time: 12,
-						count: 5
-					}
-				],
+				selDate: '',
+				shift: [],
 				skeleton: [{
 					type: 'flex',
 					num: 1,
@@ -112,9 +85,40 @@
 				}]
 			}
 		},
+		onLaunch() {
+
+
+		},
+		onInit() {},
+		onLoad() {
+			this.doctorId = 18;
+			this.selDate = '2024-02-22';
+			this.getDoctorInfo();
+			this.getShiftTimeList();
+		},
 		methods: {
 			leftClick() {
 				console.log('leftClick');
+			},
+			getDoctorInfo() {
+				var _this = this;
+				getDoctor({
+					doctorId: _this.doctorId
+				}).then((res) => {
+					console.log(res);
+					_this.doctor = res.data.data;
+				})
+			},
+			getShiftTimeList() {
+				var _this = this;
+				getShiftTimeList({
+					doctorId: _this.doctorId,
+					selDate: _this.selDate
+				}).then(res => {
+					console.log(res);
+					_this.shift = res.data.data
+					_this.loading = false;
+				})
 			},
 			goReservation(item) {
 				if (item.count > 0) {
@@ -122,7 +126,7 @@
 						url: "/pages/reservation/reservation",
 						params: {
 							shift: encodeURIComponent(JSON.stringify(item)),
-							doctor:encodeURIComponent(JSON.stringify(this.doctor))
+							doctor: encodeURIComponent(JSON.stringify(this.doctor))
 						}
 					})
 				} else {

@@ -16,7 +16,11 @@
 				title: 'Hello',
 				doctor: {},
 				shift: {},
-				registrationFee: 0.1
+				registrationFee: 0.1,
+				register: {
+					shiftId: 0,
+					shiftTimeId: 0
+				}
 			}
 		},
 		onLoad(o) {
@@ -28,28 +32,45 @@
 
 		},
 		methods: {
+			dateFormat(){
+				
+			},
 			toPay() {
-				var date = new Date();
+				let _this = this;
+				const date = new Date();
+				const year = date.getFullYear();
+				const month = String(date.getMonth() + 1).padStart(2, '0'); // 月份从0开始
+				const day = String(date.getDate()).padStart(2, '0');
+				const hours = String(date.getHours()).padStart(2, '0');
+				const minutes = String(date.getMinutes()).padStart(2, '0');
+				const seconds = String(date.getSeconds()).padStart(2, '0');
+				const formattedDate = `${year}${month}${day}${hours}${minutes}${seconds}`;
 				console.log(date);
 				uni.getProvider({
 					service: 'payment',
 					success(res) {
 						console.log(res);
 						uni.request({
-							url:'http://192.168.43.214:8083/alipay/pay',
-							method:'GET',
-							data:{
-								out_trade_no:'70501111111S00111119',
-								total_amount:'9.00',
-								subject:'大乐透'
+							url: 'http://u4taww.natappfree.cc/alipay/pay',
+							method: 'GET',
+							data: {
+								out_trade_no: formattedDate,
+								total_amount: '9.00',
+								subject: '挂号'
 							},
 							success(data) {
 								// console.log(data.data.data);
 								uni.requestPayment({
-									provider:res.provider[0],
-									orderInfo:data.data.data,
+									provider: res.provider[0],
+									orderInfo: data.data.data,
 									success(payRes) {
-										 console.log('success:' + JSON.stringify(payRes));
+										console.log(payRes);
+										_this.register.shiftTimeId = _this.shift.shiftTimeId;
+										_this.register.shiftId= _this.shift.shiftId;
+										console.log(_this.register);
+										uni.request({
+											url:"http://u4taww.natappfree.cc/alipay/pay"
+										})
 									}
 								})
 							}
