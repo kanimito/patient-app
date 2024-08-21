@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "中南林业医院挂号系统 - 预约详情",
+  "usingComponents": {
+    "uv-image": "/uni_modules/uv-image/components/uv-image/uv-image",
+    "uv-button": "/uni_modules/uv-button/components/uv-button/uv-button"
+  }
+}

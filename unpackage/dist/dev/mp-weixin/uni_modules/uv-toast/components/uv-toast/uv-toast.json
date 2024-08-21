@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "uv-overlay": "/uni_modules/uv-overlay/components/uv-overlay/uv-overlay",
+    "uv-transition": "/uni_modules/uv-transition/components/uv-transition/uv-transition",
+    "uv-loading-icon": "/uni_modules/uv-loading-icon/components/uv-loading-icon/uv-loading-icon",
+    "uv-icon": "/uni_modules/uv-icon/components/uv-icon/uv-icon",
+    "uv-gap": "/uni_modules/uv-gap/components/uv-gap/uv-gap"
+  },
+  "component": true
+}
