@@ -1,9 +1,34 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/doctorDetail/index",
+			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "中南林业医院挂号系统 - 医生详情"
+				"navigationBarTitleText": "中南林业医院挂号系统 - 首页"
+			}
+		},
+		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "中南林业医院挂号系统 - 登录"
+			}
+		},
+		{
+			"path": "pages/register/register",
+			"style": {
+				"navigationBarTitleText": "中南林业医院挂号系统 - 注册"
+			}
+		},
+		{
+			"path": "pages/booking/booking",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path" : "pages/userInfo/userInfo",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
 			}
 		}
 	],
@@ -13,5 +38,32 @@
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	},
-	"uniIdRouter": {}
+	"uniIdRouter": {},
+	
+	"tabBar": {
+		"color": "#000000",
+		"selectedColor": "#ff0000",
+		"backgroundColor": "#ffffff",
+		
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"text": "首页",
+				"iconPath": "static/image/index-no.png",
+				"selectedIconPath": "static/image/index.png"
+			},
+			{
+				"pagePath": "pages/booking/booking",
+				"text": "预约挂号",
+				"iconPath": "static/image/booking-no.png",
+				"selectedIconPath": "static/image/booking.png"
+			},
+			{
+				"pagePath": "pages/userInfo/userInfo",
+				"text": "我的",
+				"iconPath": "static/image/my-no.png",
+				"selectedIconPath": "static/image/my.png"
+			}
+		]
+	}
 }

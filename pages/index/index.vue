@@ -1,9 +1,21 @@
 <template>
-	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view class="text-area">
-			<text class="title">{{title}}</text>
-		</view>
+	<view>
+		<!-- 轮播图 -->
+		<uv-swiper :list="list" indicator indicatorMode="line" circular></uv-swiper>
+		
+		<uv-gap height="20" bgColor="#fff"></uv-gap>
+
+		<!-- 宫格布局 -->
+		<uv-grid :col="2" @click="click">
+			<uv-grid-item v-for="(item,index) in baseList" :key="index">
+				<uv-icon :customStyle="{paddingTop:20+'rpx'}" :name="item.name" :size="22"></uv-icon>
+				<text class="grid-text">{{item.title}}</text>
+			</uv-grid-item>
+		</uv-grid>
+		
+		<uv-gap height="20" bgColor="#fff"></uv-gap>
+		
+		
 	</view>
 </template>
 
@@ -11,42 +23,47 @@
 	export default {
 		data() {
 			return {
-				title: 'Hello'
+				// 轮播图图片
+				list: [
+					'https://ts1.cn.mm.bing.net/th?id=OIP-C.mH9YLFEL5YdVxJM82mjVJQHaEo&w=316&h=197&c=8&rs=1&qlt=90&o=6&dpr=1.8&pid=3.1&rm=2',
+					'https://ts2.cn.mm.bing.net/th?id=OIP-C.VzhOTC3SVqdVV48AhF5grwHaFS&w=295&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.8&pid=3.1&rm=2'
+				],
+				baseList: [{
+					name: 'star',
+					title: '预约挂号'
+				}, {
+					name: 'email',
+					title: '我的挂号'
+				}, {
+					name: 'scan',
+					title: '门诊缴费'
+				}, {
+					name: 'list',
+					title: '医生信息'
+				}, {
+					name: 'list',
+					title: '诊断报告'
+				}, {
+					name: 'coupon',
+					title: '病历卡'
+				}
+				
+				]
 			}
 		},
-		onLoad() {
-
-		},
 		methods: {
-
+			click(name) {
+				uni.showToast({
+					icon: 'none',
+					title: `点击了第${name+1}个`
+				})
+			}
 		}
 	}
 </script>
-
-<style>
-	.content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin-top: 200rpx;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 50rpx;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
+<style lang="scss">
+	.grid-text {
+		font-size: 14px;
+		color: #909399;
 	}
 </style>
