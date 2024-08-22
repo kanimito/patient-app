@@ -1,5 +1,5 @@
 // 全局请求封装
-const base_url = 'http://u4taww.natappfree.cc'
+const base_url = 'http://99tqpy.natappfree.cc'
 // 请求超出时间
 const timeout = 5000
  

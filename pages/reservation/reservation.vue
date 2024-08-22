@@ -69,7 +69,8 @@
 								alipay({
 									out_trade_no: formattedDate,
 									total_amount: '9.00',
-									subject: '挂号'
+									subject: '挂号',
+									status:0
 								}).then(data => {
 									uni.requestPayment({
 										provider: res.provider[0],
