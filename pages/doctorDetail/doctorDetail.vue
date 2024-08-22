@@ -90,9 +90,9 @@
 
 		},
 		onInit() {},
-		onLoad() {
-			this.doctorId = 18;
-			this.selDate = '2024-02-22';
+		onLoad(o) {
+			this.doctorId = o.doctorId;
+			this.selDate = '2024-02-23';
 			this.getDoctorInfo();
 			this.getShiftTimeList();
 		},

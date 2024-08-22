@@ -7,4 +7,12 @@ export const getDoctor = (params) => {
 	})
 }
 
+export const getDoctorList = (params) => {
+	return request({
+		url: '/patient/getDoctorList',
+		method: 'get',
+		data: params
+	})
+}
+
 
