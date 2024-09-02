@@ -1,0 +1,98 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "中南林业医院挂号系统 - 首页"
+			}
+		},
+		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "中南林业医院挂号系统 - 登录"
+			}
+		},
+		{
+			"path": "pages/register/register",
+			"style": {
+				"navigationBarTitleText": "中南林业医院挂号系统 - 注册"
+			}
+		},
+		// {
+		// 	"path": "pages/booking/booking",
+		// 	"style": {
+		// 		"navigationBarTitleText": "中南林业医院挂号系统 - 预约"
+		// 	}
+		// },
+		{
+			"path" : "pages/notice/notice",
+			"style" : 
+			{
+				"navigationBarTitleText" : "中南林业医院挂号系统 - 通知"
+			}
+		},
+		{
+			"path" : "pages/userInfo/userInfo",
+			"style" : 
+			{
+				"navigationBarTitleText" : "中南林业医院挂号系统 - 个人中心"
+			}
+		},
+		{
+			"path" : "pages/personaldate/personaldate",
+			"style" : 
+			{
+				"navigationBarTitleText" : "中南林业医院挂号系统 - 个人资料"
+			}
+		},
+		{
+			"path" : "pages/patientCard/patientCard",
+			"style" : 
+			{
+				"navigationBarTitleText" : "中南林业医院挂号系统 - 病历卡"
+			}
+		},
+		{
+			"path" : "pages/test/test",
+			"style" : 
+			{
+				"navigationBarTitleText" : "中南林业医院挂号系统 - 测试"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"uniIdRouter": {},
+	
+	"tabBar": {
+		"color": "#000000",
+		"selectedColor": "#ff0000",
+		"backgroundColor": "#ffffff",
+		
+		"list": [
+			
+			{
+				"pagePath": "pages/notice/notice",
+				"text": "通知",
+				"iconPath": "static/image/booking-no.png",
+				"selectedIconPath": "static/image/booking.png"
+			},
+			{
+				"pagePath": "pages/index/index",
+				"text": "首页",
+				"iconPath": "static/image/index-no.png",
+				"selectedIconPath": "static/image/index.png"
+			},
+			{
+				"pagePath": "pages/userInfo/userInfo",
+				"text": "我的",
+				"iconPath": "static/image/my-no.png",
+				"selectedIconPath": "static/image/my.png"
+			}
+		]
+	}
+}
