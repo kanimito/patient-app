@@ -10,6 +10,59 @@
 		{
 			"path": "pages/doctorDetail/doctorDetail",
 			"style": {
+				"navigationBarTitleText": "中南林业医院挂号系统 - 首页"
+			}
+		},
+		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "中南林业医院挂号系统 - 登录"
+			}
+		},
+		{
+			"path": "pages/register/register",
+			"style": {
+				"navigationBarTitleText": "中南林业医院挂号系统 - 注册"
+			}
+		},
+		// {
+		// 	"path": "pages/booking/booking",
+		// 	"style": {
+		// 		"navigationBarTitleText": "中南林业医院挂号系统 - 预约"
+		// 	}
+		// },
+		{
+			"path" : "pages/notice/notice",
+			"style" : 
+			{
+				"navigationBarTitleText" : "中南林业医院挂号系统 - 通知"
+			}
+		},
+		{
+			"path" : "pages/userInfo/userInfo",
+			"style" : 
+			{
+				"navigationBarTitleText" : "中南林业医院挂号系统 - 个人中心"
+			}
+		},
+		{
+			"path" : "pages/personaldate/personaldate",
+			"style" : 
+			{
+				"navigationBarTitleText" : "中南林业医院挂号系统 - 个人资料"
+			}
+		},
+		{
+			"path" : "pages/patientCard/patientCard",
+			"style" : 
+			{
+				"navigationBarTitleText" : "中南林业医院挂号系统 - 病历卡"
+			}
+		},
+		{
+			"path" : "pages/test/test",
+			"style" : 
+			{
 				"navigationBarTitleText": "中南林业医院挂号系统 - 医生详情"
 			}
 		},
@@ -42,15 +95,32 @@
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	},
-	"uniIdRouter": {}
-	,
-	"condition" : { //模式配置，仅开发期间生效
-		"current": 0, //当前激活的模式(list 的索引项)
+	"uniIdRouter": {},
+	
+	"tabBar": {
+		"color": "#000000",
+		"selectedColor": "#ff0000",
+		"backgroundColor": "#ffffff",
+		
 		"list": [
+			
 			{
-				"name": "", //模式名称
-				"path": "pages/department/department", //启动页面，必选
-				"query": "" //启动参数，在页面的onLoad函数里面得到
+				"pagePath": "pages/notice/notice",
+				"text": "通知",
+				"iconPath": "static/image/booking-no.png",
+				"selectedIconPath": "static/image/booking.png"
+			},
+			{
+				"pagePath": "pages/index/index",
+				"text": "首页",
+				"iconPath": "static/image/index-no.png",
+				"selectedIconPath": "static/image/index.png"
+			},
+			{
+				"pagePath": "pages/userInfo/userInfo",
+				"text": "我的",
+				"iconPath": "static/image/my-no.png",
+				"selectedIconPath": "static/image/my.png"
 			}
 		]
 	}
