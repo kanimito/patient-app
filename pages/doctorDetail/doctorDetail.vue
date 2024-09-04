@@ -92,7 +92,17 @@
 		onInit() {},
 		onLoad(o) {
 			this.doctorId = o.doctorId;
-			this.selDate = '2024-02-23';
+			const now = new Date();
+			
+			const year = now.getFullYear();
+			const month = String(now.getMonth() + 1).padStart(2, '0'); // 月份从0开始，因此需要+1
+			const day = String(now.getDate()).padStart(2, '0');
+			
+			// 格式化为 YYYY-MM-DD HH:mm:ss
+			this.selDate = `${year}-${month}-${day}`;
+			// console.log(formattedDateTime);
+
+			// this.selDate = '2024-02-23';
 			this.getDoctorInfo();
 			this.getShiftTimeList();
 		},

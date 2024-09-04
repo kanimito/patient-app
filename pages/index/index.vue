@@ -29,13 +29,15 @@
 				baseList: [{
 						name: 'star',
 						title: '预约挂号',
-						path: '/pages/test/test'
+						path: '/pages/department/department'
 					}, {
 						name: 'email',
-						title: '我的挂号'
+						title: '我的挂号',
+						path:'/pages/registation/registation'
 					}, {
 						name: 'list',
-						title: '诊断报告'
+						title: '诊断报告',
+						path:'/pages/recipel/recipel'
 					}, {
 						name: 'coupon',
 						title: '病历卡',

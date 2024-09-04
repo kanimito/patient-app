@@ -17,3 +17,10 @@ export const isIn = (params) => {
 	})
 }
 
+export const selRegister = (params) => {
+	return request({
+		url: '/patient/selRegister',
+		method: 'get',
+		data: params
+	})
+}

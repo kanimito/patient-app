@@ -51,19 +51,20 @@
 		},
 
 		onLoad() {
+			let _this = this;
 			this.token = uni.getStorageSync('token');
 			console.log(this.token);
 
 			// 通过 post 传递用户 token 到后端查询用户基本信息
-			recipel(this.token)
+			recipel(_this.token)
 				.then(data => {
 					console.log(data);
 					console.log(data.data.data);
 					// 根据返回的数据更新 patients
-					this.patients.pname = data.data.data.pname;
-					this.patients.page = data.data.data.page;
-					this.patients.ppatientId = data.data.data.pPatientId;
-					this.patients.psex = data.data.data.psex;
+					_this.patients.pname = data.data.data.pname;
+					_this.patients.page = data.data.data.page;
+					_this.patients.ppatientId = data.data.data.pPatientId;
+					_this.patients.psex = data.data.data.psex;
 				})
 				.catch(errors => {
 					console.error("请求失败：", errors);

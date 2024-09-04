@@ -83,7 +83,8 @@
 												res => {
 													console.log(res);
 													uni.$uv.route({
-														url: "/pages/doctorDetail/doctorDetail"
+														type:"switchTab",
+														url: "/pages/index/index"
 													})
 												})
 										}

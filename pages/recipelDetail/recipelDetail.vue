@@ -57,15 +57,16 @@
 		},
 		methods: {
 			getDrugOrder() {
+				let _this = this;
 				getDrugOrder({
-					rid: this.recipel.rid
+					rid: _this.recipel.rid
 				}).then(res => {
-					this.drugOrder = res.data.data;
-					console.log(this.drugOrder);
-					this.drugOrder.forEach((item) => {
-						this.totalCost = item.doCost;
-						this.orderStatus = item.doStatus;
-						this.doId = item.doId;
+					_this.drugOrder = res.data.data;
+					console.log(_this.drugOrder);
+					_this.drugOrder.forEach((item) => {
+						_this.totalCost = item.doCost;
+						_this.orderStatus = item.doStatus;
+						_this.doId = item.doId;
 					})
 				})
 			},
@@ -79,7 +80,7 @@
 				const seconds = String(date.getSeconds()).padStart(2, '0');
 				const formattedDate = `${year}${month}${day}${hours}${minutes}${seconds}`;
 				console.log(parseFloat(this.totalCost)+'');
-				var _this = this;
+				let _this = this;
 				uni.getProvider({
 					service: "payment",
 					success(res) {

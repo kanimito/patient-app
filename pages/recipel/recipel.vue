@@ -36,7 +36,7 @@
 			};
 		},
 		onLoad() {
-			this.timestampToTime(this.curDate);
+			// this.timestampToTime(this.curDate);
 			this.getRecipel();
 		},
 		filters: {

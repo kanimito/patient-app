@@ -11,6 +11,9 @@
 				
 			}
 		},
+		onLoad(o) {
+			console.log(o);
+		},
 		methods: {
 			
 		}

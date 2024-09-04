@@ -39,19 +39,20 @@ import { personalDate, updatePersonalDate } from'@/api/api/personaldate.js';
 		},
 
 		onLoad() {
+			let _this = this;
 			this.token = uni.getStorageSync('token');
 			console.log( this.token);
 
 			// 通过 post 传递用户 token 到后端查询用户基本信息
-			personalDate(this.token)
+			personalDate(_this.token)
 				.then(data => {
 					console.log(data);
 					console.log(data.data.data);
 					// 根据返回的数据更新 userInfo
-					this.userInfo.pname = data.data.data.pname;
-					this.userInfo.pemail = data.data.data.pemail;
-					this.userInfo.ptel = data.data.data.ptel;
-					this.userInfo.psex = data.data.data.psex;
+					_this.userInfo.pname = data.data.data.pname;
+					_this.userInfo.pemail = data.data.data.pemail;
+					_this.userInfo.ptel = data.data.data.ptel;
+					_this.userInfo.psex = data.data.data.psex;
 					try {
 						uni.setStorageSync('userdate',data.data.data);
 						console.log('缓存成功');
